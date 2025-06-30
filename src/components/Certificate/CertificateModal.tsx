@@ -95,8 +95,17 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
         downloadImageDirectly();
       };
       
-      // Load the certificate template
-      img.src = '/image copy copy copy copy.png';
+      // Try multiple possible paths for the certificate image
+      const imagePaths = [
+        '/image copy copy copy copy.png',
+        '/public/image copy copy copy copy.png',
+        './image copy copy copy copy.png',
+        '/images/certificate.png',
+        '/public/images/certificate.png'
+      ];
+      
+      // Try loading the first available image
+      img.src = imagePaths[0];
       
     } catch (error) {
       console.error('Error generating certificate:', error);
@@ -142,6 +151,14 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
     }
   };
 
+  // Certificate image paths to try
+  const certificateImagePaths = [
+    '/image copy copy copy copy.png',
+    '/images/certificate.png',
+    '/public/images/certificate.png',
+    'https://via.placeholder.com/800x600/f0f9ff/1e40af?text=Certificate+Template'
+  ];
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
@@ -162,14 +179,27 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
             ref={certificateRef}
             className="relative w-full max-w-4xl mx-auto"
           >
-            {/* Certificate Image */}
+            {/* Certificate Image with fallback */}
             <div className="relative w-full">
-              <img 
-                src="/image copy copy copy copy.png" 
-                alt="Certificate of Completion" 
-                className="w-full h-auto rounded-xl shadow-lg"
-                style={{ maxHeight: '70vh', objectFit: 'contain' }}
-              />
+              <picture>
+                <source srcSet="/image copy copy copy copy.png" type="image/png" />
+                <source srcSet="/images/certificate.png" type="image/png" />
+                <img 
+                  src="/image copy copy copy copy.png"
+                  alt="Certificate of Completion" 
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  style={{ maxHeight: '70vh', objectFit: 'contain' }}
+                  onError={(e) => {
+                    // Try fallback images if main image fails
+                    const target = e.target as HTMLImageElement;
+                    if (target.src.includes('image copy copy copy copy.png')) {
+                      target.src = '/images/certificate.png';
+                    } else if (target.src.includes('/images/certificate.png')) {
+                      target.src = 'https://via.placeholder.com/800x600/f0f9ff/1e40af?text=Certificate+Template';
+                    }
+                  }}
+                />
+              </picture>
               
               {/* Overlay with student details - positioned to match certificate layout exactly */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
