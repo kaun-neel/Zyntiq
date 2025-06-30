@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import { X, Download, Share2, Award } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -33,31 +31,89 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
   };
 
   const downloadCertificate = async () => {
-    if (!certificateRef.current) return;
-
     try {
-      const canvas = await html2canvas(certificateRef.current, {
-        scale: 2,
-        backgroundColor: '#ffffff',
-        useCORS: true,
-        allowTaint: true
-      });
+      // Create a canvas to draw the certificate image with user details
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      if (!ctx) {
+        console.error('Could not get canvas context');
+        return;
+      }
 
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4'
-      });
-
-      const imgWidth = 297;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save(`${courseName}-Certificate-${studentName}.pdf`);
+      // Load the certificate template image
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      img.onload = () => {
+        // Set canvas size to match image
+        canvas.width = img.width;
+        canvas.height = img.height;
+        
+        // Draw the certificate template
+        ctx.drawImage(img, 0, 0);
+        
+        // Add custom text overlay for student name
+        ctx.fillStyle = '#2d3748'; // Dark gray color
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Student name - adjust position and size based on the certificate layout
+        ctx.font = 'bold 48px Arial, sans-serif';
+        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.45);
+        
+        // Course name - smaller text below student name
+        ctx.font = 'bold 32px Arial, sans-serif';
+        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.55);
+        
+        // Date
+        ctx.font = '24px Arial, sans-serif';
+        ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.65);
+        
+        // Certificate ID
+        ctx.font = '18px Arial, sans-serif';
+        ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.85);
+        
+        // Convert canvas to blob and download
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${courseName}-Certificate-${studentName}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+          }
+        }, 'image/png');
+      };
+      
+      img.onerror = () => {
+        console.error('Failed to load certificate image');
+        // Fallback: direct download of the template
+        downloadImageDirectly();
+      };
+      
+      // Load the certificate template
+      img.src = '/image copy copy copy copy.png';
+      
     } catch (error) {
       console.error('Error generating certificate:', error);
+      // Fallback: direct download of the template
+      downloadImageDirectly();
     }
+  };
+
+  const downloadImageDirectly = () => {
+    // Fallback method: direct download of the certificate template
+    const link = document.createElement('a');
+    link.href = '/image copy copy copy copy.png';
+    link.download = `${courseName}-Certificate-${studentName}.png`;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const shareCertificate = async () => {
@@ -88,117 +144,135 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Course Certificate</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Course Certificate</h2>
           <button
             onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+            className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
           >
-            <X size={24} className="text-gray-600" />
+            <X size={20} className="text-gray-600" />
           </button>
         </div>
 
-        {/* Certificate */}
-        <div className="p-6">
+        {/* Certificate Display */}
+        <div className="p-4 sm:p-6">
           <div
             ref={certificateRef}
-            className="certificate-container bg-gradient-to-br from-purple-50 to-indigo-50 border-8 border-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl p-12 text-center relative overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-              border: '8px solid',
-              borderImage: 'linear-gradient(45deg, #8b5cf6, #6366f1) 1'
-            }}
+            className="relative w-full max-w-4xl mx-auto"
           >
-            {/* Decorative Elements */}
-            <div className="absolute top-4 left-4 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20"></div>
-            <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-20"></div>
-            <div className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-20"></div>
-            <div className="absolute bottom-4 right-4 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-20"></div>
-
-            {/* Logo */}
-            <div className="mb-8">
+            {/* Certificate Image */}
+            <div className="relative w-full">
               <img 
-                src="/Frame 3.png" 
-                alt="Zyntiq Logo" 
-                className="h-16 mx-auto object-contain"
+                src="/image copy copy copy copy.png" 
+                alt="Certificate of Completion" 
+                className="w-full h-auto rounded-xl shadow-lg"
+                style={{ maxHeight: '70vh', objectFit: 'contain' }}
               />
-            </div>
-
-            {/* Certificate Title */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-              Certificate of Completion
-            </h1>
-
-            {/* Award Icon */}
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                <Award className="w-10 h-10 text-white" />
+              
+              {/* Overlay with student details - positioned to match certificate layout */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+                {/* Student Name */}
+                <div 
+                  className="absolute text-gray-800 font-bold"
+                  style={{ 
+                    top: '42%', 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    fontSize: 'clamp(1rem, 3vw, 2.5rem)',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  {studentName}
+                </div>
+                
+                {/* Course Name */}
+                <div 
+                  className="absolute text-gray-700 font-semibold"
+                  style={{ 
+                    top: '52%', 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    fontSize: 'clamp(0.8rem, 2.5vw, 1.8rem)',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  {courseName}
+                </div>
+                
+                {/* Date */}
+                <div 
+                  className="absolute text-gray-600"
+                  style={{ 
+                    top: '62%', 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    fontSize: 'clamp(0.6rem, 2vw, 1.2rem)',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  {formatDate(completionDate)}
+                </div>
+                
+                {/* Certificate ID */}
+                <div 
+                  className="absolute text-gray-500 text-xs"
+                  style={{ 
+                    top: '82%', 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    fontSize: 'clamp(0.5rem, 1.5vw, 0.9rem)',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  Certificate ID: {certificateId}
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* Certificate Text */}
-            <div className="space-y-6 mb-8">
-              <p className="text-lg text-gray-700">This is to certify that</p>
-              
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 break-words">
-                {studentName}
-              </h2>
-              
-              <p className="text-lg text-gray-700">has successfully completed the</p>
-              
-              <h3 className="text-2xl md:text-3xl font-bold gradient-text break-words">
-                {courseName}
-              </h3>
-              
-              <p className="text-lg text-gray-700">
-                on {formatDate(completionDate)}
-              </p>
-            </div>
-
-            {/* Signature Section */}
-            <div className="flex justify-between items-end mt-12 pt-8 border-t border-gray-300">
-              <div className="text-left">
-                <div className="w-32 h-0.5 bg-gray-400 mb-2"></div>
-                <p className="text-sm text-gray-600">Authorized Signature</p>
+          {/* Certificate Info */}
+          <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-blue-900 mb-2">Certificate Details</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="font-medium text-blue-800">Student:</span>
+                  <span className="ml-2 text-blue-700">{studentName}</span>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">Course:</span>
+                  <span className="ml-2 text-blue-700">{courseName}</span>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">Completed:</span>
+                  <span className="ml-2 text-blue-700">{formatDate(completionDate)}</span>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">Certificate ID:</span>
+                  <span className="ml-2 text-blue-700 font-mono">{certificateId}</span>
+                </div>
               </div>
-              
-              <div className="text-center">
-                <p className="text-xs text-gray-500 mb-1">Certificate ID</p>
-                <p className="text-sm font-mono text-gray-700">{certificateId}</p>
-              </div>
-              
-              <div className="text-right">
-                <div className="w-32 h-0.5 bg-gray-400 mb-2"></div>
-                <p className="text-sm text-gray-600">Date Issued</p>
-              </div>
-            </div>
-
-            {/* Verification Note */}
-            <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-xs text-blue-800">
-                This certificate can be verified at zyntiq.in with Certificate ID: {certificateId}
-              </p>
             </div>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 p-6 border-t border-gray-200">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-6 border-t border-gray-200">
           <button
             onClick={downloadCertificate}
-            className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300"
+            className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300 min-h-[48px]"
           >
             <Download size={20} />
-            Download PDF
+            <span className="text-sm sm:text-base">Download Certificate</span>
           </button>
           <button
             onClick={shareCertificate}
-            className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border-2 border-purple-300 text-purple-600 rounded-xl font-medium hover:bg-purple-50 transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 px-4 sm:px-6 py-3 border-2 border-purple-300 text-purple-600 rounded-xl font-medium hover:bg-purple-50 transition-colors min-h-[48px]"
           >
             <Share2 size={20} />
-            Share Certificate
+            <span className="text-sm sm:text-base">Share Certificate</span>
           </button>
         </div>
       </div>
