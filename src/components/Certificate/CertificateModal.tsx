@@ -53,40 +53,100 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
         // Draw the certificate template
         ctx.drawImage(img, 0, 0);
         
-        // Add custom text overlay for student details
-        ctx.fillStyle = '#2d3748'; // Dark gray color
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+        // Load and draw the new Zyntiq logo
+        const logo = new Image();
+        logo.crossOrigin = 'anonymous';
+        logo.onload = () => {
+          // Calculate logo size and position (top-left area, larger size)
+          const logoWidth = canvas.width * 0.15; // 15% of canvas width
+          const logoHeight = (logo.height / logo.width) * logoWidth; // Maintain aspect ratio
+          const logoX = canvas.width * 0.08; // 8% from left
+          const logoY = canvas.height * 0.08; // 8% from top
+          
+          // Draw the logo
+          ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
+          
+          // Add custom text overlay for student details
+          ctx.fillStyle = '#2d3748'; // Dark gray color
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          
+          // Student name - positioned above the line (around 48% from top)
+          ctx.font = 'bold 60px Arial, sans-serif';
+          ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
+          
+          // Course name - positioned below the line (around 58% from top)
+          ctx.font = 'bold 36px Arial, sans-serif';
+          ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
+          
+          // Date - positioned in the lower section
+          ctx.font = '28px Arial, sans-serif';
+          ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.72);
+          
+          // Certificate ID - positioned at the bottom
+          ctx.font = '20px Arial, sans-serif';
+          ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.90);
+          
+          // Convert canvas to blob and download
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = `${courseName}-Certificate-${studentName}.png`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            }
+          }, 'image/png');
+        };
         
-        // Student name - positioned above the line (around 48% from top)
-        ctx.font = 'bold 60px Arial, sans-serif';
-        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
+        logo.onerror = () => {
+          // If logo fails to load, continue without it
+          console.warn('Logo failed to load, proceeding without logo');
+          proceedWithoutLogo();
+        };
         
-        // Course name - positioned below the line (around 58% from top)
-        ctx.font = 'bold 36px Arial, sans-serif';
-        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
+        // Load the new Zyntiq logo
+        logo.src = '/zyntiq-logo-new.png';
         
-        // Date - positioned in the lower section
-        ctx.font = '28px Arial, sans-serif';
-        ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.72);
-        
-        // Certificate ID - positioned at the bottom
-        ctx.font = '20px Arial, sans-serif';
-        ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.90);
-        
-        // Convert canvas to blob and download
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `${courseName}-Certificate-${studentName}.png`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-          }
-        }, 'image/png');
+        const proceedWithoutLogo = () => {
+          // Add custom text overlay for student details
+          ctx.fillStyle = '#2d3748'; // Dark gray color
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          
+          // Student name - positioned above the line (around 48% from top)
+          ctx.font = 'bold 60px Arial, sans-serif';
+          ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
+          
+          // Course name - positioned below the line (around 58% from top)
+          ctx.font = 'bold 36px Arial, sans-serif';
+          ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
+          
+          // Date - positioned in the lower section
+          ctx.font = '28px Arial, sans-serif';
+          ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.72);
+          
+          // Certificate ID - positioned at the bottom
+          ctx.font = '20px Arial, sans-serif';
+          ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.90);
+          
+          // Convert canvas to blob and download
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = `${courseName}-Certificate-${studentName}.png`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            }
+          }, 'image/png');
+        };
       };
       
       img.onerror = () => {
@@ -170,6 +230,27 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
                 className="w-full h-auto rounded-xl shadow-lg"
                 style={{ maxHeight: '70vh', objectFit: 'contain' }}
               />
+              
+              {/* New Zyntiq Logo Overlay - positioned in top-left, larger size */}
+              <div 
+                className="absolute"
+                style={{ 
+                  top: '8%', 
+                  left: '8%',
+                  width: '15%',
+                  height: 'auto'
+                }}
+              >
+                <img 
+                  src="/zyntiq-logo-new.png" 
+                  alt="Zyntiq Logo" 
+                  className="w-full h-auto object-contain"
+                  style={{ 
+                    maxWidth: '100%',
+                    height: 'auto'
+                  }}
+                />
+              </div>
               
               {/* Overlay with student details - positioned to match certificate layout exactly */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
