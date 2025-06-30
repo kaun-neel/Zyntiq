@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Clock, BookOpen, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import PaymentModal from '../Payment/PaymentModal';
@@ -457,7 +457,7 @@ const CoursesPage = () => {
             })}
           </div>
 
-          {/* Premium Pass Banner - Mobile Optimized */}
+          {/* Premium Pass Banner - Mobile Optimized with BIGGER LOGO */}
           <div className="mt-12 sm:mt-16 relative overflow-hidden rounded-2xl sm:rounded-3xl">
             {/* Purple gradient background */}
             <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 relative">
@@ -479,10 +479,11 @@ const CoursesPage = () => {
                   {/* Left Content */}
                   <div className="text-white text-center md:text-left">
                     <div className="flex items-center justify-center md:justify-start gap-3 mb-4 sm:mb-6">
+                      {/* BIGGER ZYNTIQ LOGO */}
                       <img 
                         src="/Frame 3.png" 
                         alt="Zyntiq Logo" 
-                        className="h-6 sm:h-8 w-auto object-contain"
+                        className="h-10 sm:h-14 md:h-16 lg:h-20 xl:h-24 w-auto object-contain"
                       />
                       <div className="flex items-center gap-2 bg-purple-600/50 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full">
                         <div className="w-2 h-2 bg-white rounded-full"></div>
