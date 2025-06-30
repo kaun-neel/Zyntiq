@@ -58,13 +58,13 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
-        // Student name - positioned in the main content area (where the blank line is)
+        // Student name - positioned above the line (around 48% from top)
         ctx.font = 'bold 60px Arial, sans-serif';
-        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.52);
+        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
         
-        // Course name - positioned below in the descriptive text area
+        // Course name - positioned below the line (around 58% from top)
         ctx.font = 'bold 36px Arial, sans-serif';
-        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.62);
+        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
         
         // Date - positioned in the lower section
         ctx.font = '28px Arial, sans-serif';
@@ -173,11 +173,11 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
               
               {/* Overlay with student details - positioned to match certificate layout exactly */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                {/* Student Name - positioned on the blank line after "THIS IS TO CERTIFY THAT" */}
+                {/* Student Name - positioned ABOVE the line (around 48% from top) */}
                 <div 
                   className="absolute text-gray-800 font-bold break-words max-w-[70%]"
                   style={{ 
-                    top: '52%', 
+                    top: '48%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
                     fontSize: 'clamp(1.5rem, 4.5vw, 3.5rem)',
@@ -189,11 +189,11 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
                   {studentName}
                 </div>
                 
-                {/* Course Name - positioned in the descriptive text area, replacing template text */}
+                {/* Course Name - positioned BELOW the line (around 58% from top) */}
                 <div 
                   className="absolute text-gray-700 font-semibold break-words max-w-[80%]"
                   style={{ 
-                    top: '62%', 
+                    top: '58%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
                     fontSize: 'clamp(1rem, 3.2vw, 2.2rem)',
