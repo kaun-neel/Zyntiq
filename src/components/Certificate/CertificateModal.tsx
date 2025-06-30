@@ -32,97 +32,182 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
 
   const downloadCertificate = async () => {
     try {
-      // Create a canvas to draw the certificate image with user details
+      // Create a high-resolution canvas
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       
       if (!ctx) {
         console.error('Could not get canvas context');
+        fallbackDownload();
         return;
       }
+
+      // Set high resolution for better quality
+      const scale = 2;
+      canvas.width = 1200 * scale;
+      canvas.height = 800 * scale;
+      ctx.scale(scale, scale);
 
       // Load the certificate template image
       const img = new Image();
       img.crossOrigin = 'anonymous';
       
       img.onload = () => {
-        // Set canvas size to match image
-        canvas.width = img.width;
-        canvas.height = img.height;
-        
-        // Draw the certificate template
-        ctx.drawImage(img, 0, 0);
-        
-        // Add custom text overlay for student details
-        ctx.fillStyle = '#2d3748'; // Dark gray color
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        
-        // Student name - positioned above the line (around 48% from top)
-        ctx.font = 'bold 60px Arial, sans-serif';
-        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
-        
-        // Course name - positioned below the line (around 58% from top)
-        ctx.font = 'bold 36px Arial, sans-serif';
-        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
-        
-        // Date - positioned in the lower section
-        ctx.font = '28px Arial, sans-serif';
-        ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.72);
-        
-        // Certificate ID - positioned at the bottom
-        ctx.font = '20px Arial, sans-serif';
-        ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.90);
-        
-        // Convert canvas to blob and download
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `${courseName}-Certificate-${studentName}.png`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-          }
-        }, 'image/png');
+        try {
+          // Draw the certificate template
+          ctx.drawImage(img, 0, 0, 1200, 800);
+          
+          // Set text properties for better rendering
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = '#2d3748';
+          
+          // Student name - positioned above the line
+          ctx.font = 'bold 48px "Times New Roman", serif';
+          ctx.fillText(studentName, 600, 380);
+          
+          // Course name - positioned below the line  
+          ctx.font = 'bold 32px "Times New Roman", serif';
+          ctx.fillText(courseName, 600, 460);
+          
+          // Date
+          ctx.font = '24px "Times New Roman", serif';
+          ctx.fillText(formatDate(completionDate), 600, 580);
+          
+          // Certificate ID
+          ctx.font = '18px "Arial", sans-serif';
+          ctx.fillText(`Certificate ID: ${certificateId}`, 600, 720);
+          
+          // Convert to blob and download
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.download = `${courseName.replace(/[^a-zA-Z0-9]/g, '-')}-Certificate-${studentName.replace(/[^a-zA-Z0-9]/g, '-')}.png`;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              URL.revokeObjectURL(url);
+            } else {
+              fallbackDownload();
+            }
+          }, 'image/png', 1.0);
+          
+        } catch (error) {
+          console.error('Error drawing on canvas:', error);
+          fallbackDownload();
+        }
       };
       
       img.onerror = () => {
         console.error('Failed to load certificate image');
-        // Fallback: direct download of the template
-        downloadImageDirectly();
+        fallbackDownload();
       };
       
-      // Try multiple possible paths for the certificate image
-      const imagePaths = [
-        '/image copy copy copy copy.png',
-        '/public/image copy copy copy copy.png',
-        './image copy copy copy copy.png',
-        '/images/certificate.png',
-        '/public/images/certificate.png'
-      ];
-      
-      // Try loading the first available image
-      img.src = imagePaths[0];
+      // Try to load the certificate image
+      img.src = '/image copy copy copy copy.png';
       
     } catch (error) {
-      console.error('Error generating certificate:', error);
-      // Fallback: direct download of the template
-      downloadImageDirectly();
+      console.error('Error in downloadCertificate:', error);
+      fallbackDownload();
     }
   };
 
-  const downloadImageDirectly = () => {
-    // Fallback method: direct download of the certificate template
-    const link = document.createElement('a');
-    link.href = '/image copy copy copy copy.png';
-    link.download = `${courseName}-Certificate-${studentName}.png`;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const fallbackDownload = () => {
+    // Fallback: Create a simple certificate using HTML2Canvas approach
+    if (certificateRef.current) {
+      // Use the browser's built-in screenshot capability
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Certificate - ${studentName}</title>
+            <style>
+              body { 
+                margin: 0; 
+                padding: 20px; 
+                font-family: 'Times New Roman', serif;
+                background: white;
+              }
+              .certificate {
+                width: 800px;
+                height: 600px;
+                margin: 0 auto;
+                background-image: url('/image copy copy copy copy.png');
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                border: 2px solid #ccc;
+              }
+              .student-name {
+                position: absolute;
+                top: 48%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 36px;
+                font-weight: bold;
+                color: #2d3748;
+                text-align: center;
+              }
+              .course-name {
+                position: absolute;
+                top: 58%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 24px;
+                font-weight: bold;
+                color: #4a5568;
+                text-align: center;
+              }
+              .date {
+                position: absolute;
+                top: 72%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 18px;
+                color: #718096;
+                text-align: center;
+              }
+              .cert-id {
+                position: absolute;
+                top: 90%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 14px;
+                color: #a0aec0;
+                text-align: center;
+                font-family: monospace;
+              }
+              @media print {
+                body { margin: 0; padding: 0; }
+                .certificate { border: none; }
+              }
+            </style>
+          </head>
+          <body>
+            <div class="certificate">
+              <div class="student-name">${studentName}</div>
+              <div class="course-name">${courseName}</div>
+              <div class="date">${formatDate(completionDate)}</div>
+              <div class="cert-id">Certificate ID: ${certificateId}</div>
+            </div>
+            <script>
+              window.onload = function() {
+                setTimeout(function() {
+                  window.print();
+                  window.close();
+                }, 1000);
+              };
+            </script>
+          </body>
+          </html>
+        `);
+        printWindow.document.close();
+      }
+    }
   };
 
   const shareCertificate = async () => {
@@ -151,14 +236,6 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
     }
   };
 
-  // Certificate image paths to try
-  const certificateImagePaths = [
-    '/image copy copy copy copy.png',
-    '/images/certificate.png',
-    '/public/images/certificate.png',
-    'https://via.placeholder.com/800x600/f0f9ff/1e40af?text=Certificate+Template'
-  ];
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
@@ -179,86 +256,88 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
             ref={certificateRef}
             className="relative w-full max-w-4xl mx-auto"
           >
-            {/* Certificate Image with fallback */}
-            <div className="relative w-full">
-              <picture>
-                <source srcSet="/image copy copy copy copy.png" type="image/png" />
-                <source srcSet="/images/certificate.png" type="image/png" />
-                <img 
-                  src="/image copy copy copy copy.png"
-                  alt="Certificate of Completion" 
-                  className="w-full h-auto rounded-xl shadow-lg"
-                  style={{ maxHeight: '70vh', objectFit: 'contain' }}
-                  onError={(e) => {
-                    // Try fallback images if main image fails
-                    const target = e.target as HTMLImageElement;
-                    if (target.src.includes('image copy copy copy copy.png')) {
-                      target.src = '/images/certificate.png';
-                    } else if (target.src.includes('/images/certificate.png')) {
-                      target.src = 'https://via.placeholder.com/800x600/f0f9ff/1e40af?text=Certificate+Template';
-                    }
-                  }}
-                />
-              </picture>
+            {/* Certificate Image Container */}
+            <div className="relative w-full bg-gray-100 rounded-xl overflow-hidden">
+              <img 
+                src="/image copy copy copy copy.png"
+                alt="Certificate of Completion" 
+                className="w-full h-auto"
+                style={{ 
+                  maxHeight: '70vh', 
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  console.log('Image failed to load:', target.src);
+                  // Try fallback
+                  if (!target.src.includes('placeholder')) {
+                    target.src = 'https://via.placeholder.com/800x600/f0f9ff/1e40af?text=Certificate+Template';
+                  }
+                }}
+                onLoad={() => {
+                  console.log('Certificate image loaded successfully');
+                }}
+              />
               
-              {/* Overlay with student details - positioned to match certificate layout exactly */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                {/* Student Name - positioned ABOVE the line (around 48% from top) */}
+              {/* Text Overlay - Positioned to match your certificate exactly */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                {/* Student Name - Above the line */}
                 <div 
-                  className="absolute text-gray-800 font-bold break-words max-w-[70%]"
+                  className="absolute font-bold text-gray-800 text-center max-w-[70%] break-words"
                   style={{ 
                     top: '48%', 
                     left: '50%', 
-                    transform: 'translateX(-50%)',
+                    transform: 'translate(-50%, -50%)',
                     fontSize: 'clamp(1.5rem, 4.5vw, 3.5rem)',
                     lineHeight: '1.1',
-                    letterSpacing: '0.02em',
-                    fontFamily: 'serif'
+                    fontFamily: '"Times New Roman", serif',
+                    textShadow: '1px 1px 2px rgba(255,255,255,0.8)'
                   }}
                 >
                   {studentName}
                 </div>
                 
-                {/* Course Name - positioned BELOW the line (around 58% from top) */}
+                {/* Course Name - Below the line */}
                 <div 
-                  className="absolute text-gray-700 font-semibold break-words max-w-[80%]"
+                  className="absolute font-semibold text-gray-700 text-center max-w-[80%] break-words"
                   style={{ 
                     top: '58%', 
                     left: '50%', 
-                    transform: 'translateX(-50%)',
+                    transform: 'translate(-50%, -50%)',
                     fontSize: 'clamp(1rem, 3.2vw, 2.2rem)',
                     lineHeight: '1.2',
-                    letterSpacing: '0.01em',
-                    fontFamily: 'serif'
+                    fontFamily: '"Times New Roman", serif',
+                    textShadow: '1px 1px 2px rgba(255,255,255,0.8)'
                   }}
                 >
                   {courseName}
                 </div>
                 
-                {/* Date - positioned in the lower section */}
+                {/* Date */}
                 <div 
-                  className="absolute text-gray-600 break-words"
+                  className="absolute text-gray-600 text-center"
                   style={{ 
                     top: '72%', 
                     left: '50%', 
-                    transform: 'translateX(-50%)',
+                    transform: 'translate(-50%, -50%)',
                     fontSize: 'clamp(0.8rem, 2.5vw, 1.6rem)',
-                    lineHeight: '1.2',
-                    fontFamily: 'serif'
+                    fontFamily: '"Times New Roman", serif',
+                    textShadow: '1px 1px 2px rgba(255,255,255,0.8)'
                   }}
                 >
                   {formatDate(completionDate)}
                 </div>
                 
-                {/* Certificate ID - positioned at the bottom */}
+                {/* Certificate ID */}
                 <div 
-                  className="absolute text-gray-500 font-mono break-words"
+                  className="absolute text-gray-500 font-mono text-center"
                   style={{ 
                     top: '90%', 
                     left: '50%', 
-                    transform: 'translateX(-50%)',
+                    transform: 'translate(-50%, -50%)',
                     fontSize: 'clamp(0.6rem, 1.8vw, 1.2rem)',
-                    lineHeight: '1.2'
+                    textShadow: '1px 1px 2px rgba(255,255,255,0.8)'
                   }}
                 >
                   Certificate ID: {certificateId}
