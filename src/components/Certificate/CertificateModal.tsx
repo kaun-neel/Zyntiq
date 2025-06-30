@@ -53,26 +53,26 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
         // Draw the certificate template
         ctx.drawImage(img, 0, 0);
         
-        // Add custom text overlay for student name
+        // Add custom text overlay for student details
         ctx.fillStyle = '#2d3748'; // Dark gray color
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
-        // Student name - adjust position and size based on the certificate layout
-        ctx.font = 'bold 48px Arial, sans-serif';
-        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.45);
+        // Student name - positioned in the main content area
+        ctx.font = 'bold 60px Arial, sans-serif';
+        ctx.fillText(studentName, canvas.width / 2, canvas.height * 0.48);
         
-        // Course name - smaller text below student name
-        ctx.font = 'bold 32px Arial, sans-serif';
-        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.55);
+        // Course name - positioned below the horizontal line
+        ctx.font = 'bold 36px Arial, sans-serif';
+        ctx.fillText(courseName, canvas.width / 2, canvas.height * 0.58);
         
-        // Date
-        ctx.font = '24px Arial, sans-serif';
-        ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.65);
+        // Date - positioned in the lower section
+        ctx.font = '28px Arial, sans-serif';
+        ctx.fillText(formatDate(completionDate), canvas.width / 2, canvas.height * 0.68);
         
-        // Certificate ID
-        ctx.font = '18px Arial, sans-serif';
-        ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.85);
+        // Certificate ID - positioned at the bottom
+        ctx.font = '20px Arial, sans-serif';
+        ctx.fillText(`Certificate ID: ${certificateId}`, canvas.width / 2, canvas.height * 0.88);
         
         // Convert canvas to blob and download
         canvas.toBlob((blob) => {
@@ -171,58 +171,60 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
                 style={{ maxHeight: '70vh', objectFit: 'contain' }}
               />
               
-              {/* Overlay with student details - positioned to match certificate layout */}
+              {/* Overlay with student details - positioned to match certificate layout exactly */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                {/* Student Name */}
+                {/* Student Name - positioned in the main white area after "THIS IS TO CERTIFY THAT" */}
                 <div 
-                  className="absolute text-gray-800 font-bold"
+                  className="absolute text-gray-800 font-bold break-words max-w-[80%]"
                   style={{ 
-                    top: '42%', 
+                    top: '48%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
-                    fontSize: 'clamp(1rem, 3vw, 2.5rem)',
-                    lineHeight: '1.2'
+                    fontSize: 'clamp(1.2rem, 4vw, 3rem)',
+                    lineHeight: '1.1',
+                    letterSpacing: '0.02em'
                   }}
                 >
                   {studentName}
                 </div>
                 
-                {/* Course Name */}
+                {/* Course Name - positioned below the horizontal line */}
                 <div 
-                  className="absolute text-gray-700 font-semibold"
+                  className="absolute text-gray-700 font-semibold break-words max-w-[85%]"
                   style={{ 
-                    top: '52%', 
+                    top: '58%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
-                    fontSize: 'clamp(0.8rem, 2.5vw, 1.8rem)',
-                    lineHeight: '1.2'
+                    fontSize: 'clamp(0.9rem, 3vw, 2rem)',
+                    lineHeight: '1.2',
+                    letterSpacing: '0.01em'
                   }}
                 >
                   {courseName}
                 </div>
                 
-                {/* Date */}
+                {/* Date - positioned in the lower section */}
                 <div 
-                  className="absolute text-gray-600"
+                  className="absolute text-gray-600 break-words"
                   style={{ 
-                    top: '62%', 
+                    top: '68%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
-                    fontSize: 'clamp(0.6rem, 2vw, 1.2rem)',
+                    fontSize: 'clamp(0.7rem, 2.2vw, 1.4rem)',
                     lineHeight: '1.2'
                   }}
                 >
                   {formatDate(completionDate)}
                 </div>
                 
-                {/* Certificate ID */}
+                {/* Certificate ID - positioned at the bottom near the signature area */}
                 <div 
-                  className="absolute text-gray-500 text-xs"
+                  className="absolute text-gray-500 font-mono break-words"
                   style={{ 
-                    top: '82%', 
+                    top: '88%', 
                     left: '50%', 
                     transform: 'translateX(-50%)',
-                    fontSize: 'clamp(0.5rem, 1.5vw, 0.9rem)',
+                    fontSize: 'clamp(0.5rem, 1.5vw, 1rem)',
                     lineHeight: '1.2'
                   }}
                 >
