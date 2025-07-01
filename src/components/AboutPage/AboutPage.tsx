@@ -151,8 +151,8 @@ const AboutPage = () => {
       {/* Educational Philosophy */}
       <div className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <span className="text-purple-600 font-medium mb-2 block text-sm sm:text-base">Our Educational Philosophy</span>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-gray-800">How does Zyntiq Works?</h2>
+          <span className="text-black font-bold mb-4 block text-lg sm:text-xl bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full inline-block border-2 border-black shadow-lg">Our Educational Philosophy</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-black bg-white/90 backdrop-blur-sm px-8 py-4 rounded-2xl inline-block border-2 border-black shadow-lg">How does Zyntiq Works?</h2>
           
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {[
