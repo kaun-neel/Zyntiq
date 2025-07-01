@@ -23,15 +23,15 @@ const Footer = () => {
                 className="h-12 sm:h-14 w-auto object-contain"
               />
             </div>
-            <p className="text-black mb-4 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-700 mb-4 text-sm sm:text-base leading-relaxed">
               Zyntiq is an online education platform dedicated to helping professionals acquire new skills and advance their careers.
             </p>
             <div className="flex gap-3">
               <a href="#" className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors enhanced-shadow">
-                <Facebook size={16} className="text-black" />
+                <Facebook size={16} className="text-gray-700" />
               </a>
               <a href="#" className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors enhanced-shadow">
-                <Twitter size={16} className="text-black" />
+                <Twitter size={16} className="text-gray-700" />
               </a>
               <a 
                 href="https://www.instagram.com/zyntiq_official?utm_source=qr&igsh=a3d3cGFtb3hudWpi" 
@@ -39,7 +39,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors enhanced-shadow"
               >
-                <Instagram size={16} className="text-black" />
+                <Instagram size={16} className="text-gray-700" />
               </a>
               <a 
                 href="https://www.linkedin.com/company/zyntiq/" 
@@ -47,20 +47,20 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors enhanced-shadow"
               >
-                <Linkedin size={16} className="text-black" />
+                <Linkedin size={16} className="text-gray-700" />
               </a>
             </div>
           </div>
           
           {/* Legal & Support - Shifted to the right with margin */}
           <div className="lg:ml-8">
-            <h3 className="text-lg font-bold mb-4 text-black">Legal & Support</h3>
+            <h3 className="text-lg font-bold mb-4 text-gray-800">Legal & Support</h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     to={link.path}
-                    className="text-black hover:text-purple-600 transition-colors text-sm sm:text-base"
+                    className="text-gray-700 hover:text-purple-600 transition-colors text-sm sm:text-base"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     {link.name}
@@ -72,21 +72,21 @@ const Footer = () => {
           
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-black">Contact Info</h3>
+            <h3 className="text-lg font-bold mb-4 text-gray-800">Contact Info</h3>
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="text-purple-500 mt-1 flex-shrink-0" size={18} />
-                <span className="text-black text-sm sm:text-base">123 Education Ave, Learning City, ED 54321</span>
+                <span className="text-gray-700 text-sm sm:text-base">123 Education Ave, Learning City, ED 54321</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-purple-500 flex-shrink-0" size={18} />
-                <a href="mailto:info@zyntiq.in" className="text-black hover:text-purple-600 transition-colors text-sm sm:text-base">
+                <a href="mailto:info@zyntiq.in" className="text-gray-700 hover:text-purple-600 transition-colors text-sm sm:text-base">
                   info@zyntiq.in
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-purple-500 flex-shrink-0" size={18} />
-                <a href="tel:+11234567890" className="text-black hover:text-purple-600 transition-colors text-sm sm:text-base">
+                <a href="tel:+11234567890" className="text-gray-700 hover:text-purple-600 transition-colors text-sm sm:text-base">
                   +1 (123) 456-7890
                 </a>
               </li>
@@ -95,7 +95,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-yellow-400/30 pt-6 sm:pt-8">
-          <p className="text-center text-black text-sm">
+          <p className="text-center text-gray-600 text-sm">
             © {new Date().getFullYear()} Zyntiq. All rights reserved.
           </p>
         </div>

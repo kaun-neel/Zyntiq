@@ -48,10 +48,10 @@ const CoursesSection = () => {
   return (
     <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center text-black">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center">
           What will <span className="gradient-text">You Learn?</span>
         </h2>
-        <p className="text-center text-sm text-black mb-8 sm:mb-12 max-w-xl mx-auto px-4">
+        <p className="text-center text-sm text-gray-600 mb-8 sm:mb-12 max-w-xl mx-auto px-4">
           In order to create an engaging learning experience, the role of 
           instructor is optional, but the role of learner is essential.
         </p>
@@ -65,7 +65,7 @@ const CoursesSection = () => {
                 </div>
               </div>
               
-              <h3 className="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4 text-black">{course.title}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-center mb-3 sm:mb-4">{course.title}</h3>
               
               <div className="flex-1 flex flex-col justify-start">
                 {course.topics.length > 0 ? (
@@ -73,20 +73,20 @@ const CoursesSection = () => {
                     {course.topics.map((topic, i) => (
                       <li key={i} className="flex items-start">
                         <span className="text-gray-500 mr-2 mt-1">•</span>
-                        <span className="text-xs sm:text-sm leading-relaxed text-black">{topic}</span>
+                        <span className="text-xs sm:text-sm leading-relaxed">{topic}</span>
                       </li>
                     ))}
                   </ul>
                 ) : (
                   <div className="mb-4 sm:mb-6 flex-1 flex items-start">
-                    <p className="text-xs sm:text-sm text-black leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
                       {course.description}
                     </p>
                   </div>
                 )}
                 
                 {course.topics.length > 0 && (
-                  <p className="text-xs sm:text-sm text-black mb-4 sm:mb-6 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                     {course.description}
                   </p>
                 )}
@@ -107,14 +107,14 @@ const CoursesSection = () => {
           <Link
             to="/courses"
             onClick={handleNavigation}
-            className="btn-primary px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base"
+            className="gradient-button px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base"
           >
             Start Learning <ArrowRight size={16} />
           </Link>
           <Link
             to="/courses"
             onClick={handleNavigation}
-            className="btn-secondary px-6 py-3 rounded-full font-medium text-center text-sm sm:text-base"
+            className="px-6 py-3 rounded-full border border-purple-300 text-purple-600 hover:bg-purple-50 transition-colors text-center text-sm sm:text-base"
           >
             Browse courses
           </Link>

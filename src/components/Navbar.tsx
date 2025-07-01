@@ -61,7 +61,7 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className="text-black hover:text-purple-600 transition-colors duration-300 font-medium"
+                  className="text-gray-800 hover:text-purple-600 transition-colors duration-300 font-medium"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   {item.name}
@@ -78,7 +78,7 @@ const Navbar = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to="/account"
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-purple-300 text-black hover:bg-gray-50 transition-colors duration-300 relative"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 relative"
                 >
                   <User size={20} />
                   {hasPremiumPass && (
@@ -105,13 +105,13 @@ const Navbar = () => {
             <>
               <Link 
                 to="/login"
-                className="btn-secondary px-4 py-2 rounded-full font-medium"
+                className="px-4 py-2 rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 font-medium"
               >
                 Log in
               </Link>
               <Link
                 to="/signup"
-                className="btn-primary px-4 py-2 rounded-full font-medium"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-indigo-500 text-white hover:shadow-md transition-all duration-300 font-medium"
               >
                 Sign up
               </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-black hover:bg-white transition-colors z-50"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 hover:bg-white transition-colors z-50"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -146,7 +146,7 @@ const Navbar = () => {
                 <li key={item.name}>
                   <Link
                     to={item.path}
-                    className="block text-lg font-medium text-black hover:text-purple-600 transition-colors duration-300 py-2"
+                    className="block text-lg font-medium text-gray-800 hover:text-purple-600 transition-colors duration-300 py-2"
                     onClick={() => {
                       window.scrollTo(0, 0);
                       closeMobileMenu();
@@ -174,7 +174,7 @@ const Navbar = () => {
                     )}
                   </div>
                   <div className="flex-1">
-                    <p className="font-semibold text-black">
+                    <p className="font-semibold text-gray-900">
                       {user.first_name} {user.last_name}
                     </p>
                     <p className="text-sm text-gray-600">{user.email}</p>
@@ -191,7 +191,7 @@ const Navbar = () => {
                 <div className="space-y-3">
                   <Link
                     to="/account"
-                    className="btn-primary block w-full text-center py-3 px-4 rounded-xl font-medium"
+                    className="block w-full text-center py-3 px-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300"
                     onClick={closeMobileMenu}
                   >
                     My Account
@@ -208,14 +208,14 @@ const Navbar = () => {
               <div className="space-y-3">
                 <Link
                   to="/login"
-                  className="btn-secondary block w-full text-center py-3 px-4 rounded-xl font-medium"
+                  className="block w-full text-center py-3 px-4 border-2 border-purple-300 text-purple-600 rounded-xl font-medium hover:bg-purple-50 transition-colors"
                   onClick={closeMobileMenu}
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="btn-primary block w-full text-center py-3 px-4 rounded-xl font-medium"
+                  className="block w-full text-center py-3 px-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300"
                   onClick={closeMobileMenu}
                 >
                   Sign up
