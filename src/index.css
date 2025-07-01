@@ -16,8 +16,8 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Apply the beautiful yellow gradient background */
-  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 15%, #ffeb99 35%, #ffe066 55%, #ffd633 75%, #ffcc00 100%);
+  /* Apply the beautiful purple gradient background */
+  background: linear-gradient(135deg, #6b46c1 0%, #7c3aed 15%, #8b5cf6 35%, #9333ea 55%, #a855f7 75%, #c084fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
   /* Prevent horizontal scroll on mobile */
@@ -30,26 +30,26 @@ body {
 
 /* Global background class for consistent application */
 .yellow-gradient-bg {
-  background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 15%, #ffeb99 35%, #ffe066 55%, #ffd633 75%, #ffcc00 100%);
+  background: linear-gradient(135deg, #6b46c1 0%, #7c3aed 15%, #8b5cf6 35%, #9333ea 55%, #a855f7 75%, #c084fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
 }
 
 /* Alternative gradient variations for different sections */
 .yellow-gradient-light {
-  background: linear-gradient(135deg, #fffef7 0%, #fff9e6 25%, #fff3cd 50%, #ffeb99 75%, #ffe066 100%);
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 25%, #a5b4fc 50%, #8b5cf6 75%, #7c3aed 100%);
 }
 
 .yellow-gradient-medium {
-  background: linear-gradient(135deg, #fff3cd 0%, #ffeb99 25%, #ffe066 50%, #ffd633 75%, #ffcc00 100%);
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 25%, #6d28d9 50%, #5b21b6 75%, #4c1d95 100%);
 }
 
 .yellow-gradient-dark {
-  background: linear-gradient(135deg, #ffe066 0%, #ffd633 25%, #ffcc00 50%, #e6b800 75%, #cc9900 100%);
+  background: linear-gradient(135deg, #5b21b6 0%, #4c1d95 25%, #3730a3 50%, #312e81 75%, #1e1b4b 100%);
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text;
+  @apply bg-gradient-to-r from-purple-200 to-white text-transparent bg-clip-text;
   /* Fix text rendering issues */
   -webkit-background-clip: text;
   background-clip: text;
@@ -58,7 +58,7 @@ body {
 }
 
 .gradient-button {
-  @apply bg-gradient-to-r from-purple-500 to-indigo-500 text-white;
+  @apply bg-gradient-to-r from-purple-300 to-indigo-300 text-purple-900;
 }
 
 /* Enhanced floating animation - works on all devices */
@@ -112,8 +112,6 @@ body {
     }
   }
 }
-
-/* REMOVED: Old benefit card styles - using inline styles now for better control */
 
 /* CRITICAL: Certificate-specific text rendering fixes */
 .certificate-container {
@@ -179,7 +177,7 @@ body {
 
 /* Mobile-optimized testimonial cards */
 .testimonial-card {
-  @apply bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg p-6 sm:p-8 relative border border-white/30 hover:border-purple-200;
+  @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-lg p-6 sm:p-8 relative border border-white/40 hover:border-purple-300;
   min-height: 260px;
   transition: all 0.3s ease;
 }
@@ -187,12 +185,12 @@ body {
 .testimonial-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 /* Mobile-optimized course cards */
 .course-card {
-  @apply bg-white/90 backdrop-blur-sm rounded-3xl shadow-sm p-6 sm:p-8 flex flex-col h-full border border-white/30;
+  @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-sm p-6 sm:p-8 flex flex-col h-full border border-white/40;
   min-height: 380px;
   transition: all 0.3s ease;
 }
@@ -203,7 +201,7 @@ body {
 }
 
 .enroll-button {
-  @apply bg-purple-500 hover:bg-purple-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 text-center;
+  @apply bg-purple-300 hover:bg-purple-400 text-purple-900 font-medium py-3 px-6 rounded-full transition-all duration-300 text-center;
   min-height: 48px; /* Better touch target for mobile */
 }
 
@@ -372,24 +370,24 @@ body {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Glass morphism effects for cards on yellow background - Mobile optimized */
+/* Glass morphism effects for cards on purple background - Mobile optimized */
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .glass-card-dark {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
@@ -405,31 +403,31 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 235, 153, 0.3);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 204, 0, 0.6);
+  background: rgba(139, 92, 246, 0.6);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 204, 0, 0.8);
+  background: rgba(139, 92, 246, 0.8);
 }
 
-/* Ensure text remains readable on yellow background */
-.text-on-yellow {
-  color: #1a1a1a;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+/* Ensure text remains readable on purple background */
+.text-on-purple {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Enhanced shadows for better contrast on yellow background */
+/* Enhanced shadows for better contrast on purple background */
 .enhanced-shadow {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .enhanced-shadow-lg {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile-specific improvements */
@@ -484,7 +482,7 @@ body {
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(to right, #7c3aed, #4f46e5);
+    background-image: linear-gradient(to right, #e0e7ff, #ffffff);
     display: inline-block;
     line-height: 1.1;
   }
@@ -563,7 +561,7 @@ body {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   /* Sharper shadows and borders for retina displays */
   .enhanced-shadow {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   /* Better text rendering on high DPI */
@@ -612,7 +610,7 @@ input:focus,
 textarea:focus,
 select:focus,
 a:focus {
-  outline: 2px solid #8b5cf6;
+  outline: 2px solid #c084fc;
   outline-offset: 2px;
 }
 
