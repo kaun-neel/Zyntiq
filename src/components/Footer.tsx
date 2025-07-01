@@ -23,7 +23,7 @@ const Footer = () => {
                 className="h-12 sm:h-14 w-auto object-contain"
               />
             </div>
-            <p className="text-white mb-4 text-sm sm:text-base leading-relaxed font-medium">
+            <p className="text-black mb-4 text-sm sm:text-base leading-relaxed font-medium">
               Zyntiq is an online education platform dedicated to helping professionals acquire new skills and advance their careers.
             </p>
             <div className="flex gap-3">
@@ -54,13 +54,13 @@ const Footer = () => {
           
           {/* Legal & Support - Shifted to the right with margin */}
           <div className="lg:ml-8">
-            <h3 className="text-lg font-bold mb-4 text-white">Legal & Support</h3>
+            <h3 className="text-lg font-bold mb-4 text-black">Legal & Support</h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     to={link.path}
-                    className="text-white hover:text-yellow-300 transition-colors text-sm sm:text-base font-medium"
+                    className="text-black hover:text-purple-800 transition-colors text-sm sm:text-base font-medium"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     {link.name}
@@ -72,21 +72,21 @@ const Footer = () => {
           
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Contact Info</h3>
+            <h3 className="text-lg font-bold mb-4 text-black">Contact Info</h3>
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="text-yellow-300 mt-1 flex-shrink-0" size={18} />
-                <span className="text-white text-sm sm:text-base font-medium">123 Education Ave, Learning City, ED 54321</span>
+                <MapPin className="text-black mt-1 flex-shrink-0" size={18} />
+                <span className="text-black text-sm sm:text-base font-medium">123 Education Ave, Learning City, ED 54321</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="text-yellow-300 flex-shrink-0" size={18} />
-                <a href="mailto:info@zyntiq.in" className="text-white hover:text-yellow-300 transition-colors text-sm sm:text-base font-medium">
+                <Mail className="text-black flex-shrink-0" size={18} />
+                <a href="mailto:info@zyntiq.in" className="text-black hover:text-purple-800 transition-colors text-sm sm:text-base font-medium">
                   info@zyntiq.in
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-yellow-300 flex-shrink-0" size={18} />
-                <a href="tel:+11234567890" className="text-white hover:text-yellow-300 transition-colors text-sm sm:text-base font-medium">
+                <Phone className="text-black flex-shrink-0" size={18} />
+                <a href="tel:+11234567890" className="text-black hover:text-purple-800 transition-colors text-sm sm:text-base font-medium">
                   +1 (123) 456-7890
                 </a>
               </li>
@@ -94,8 +94,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/30 pt-6 sm:pt-8">
-          <p className="text-center text-white text-sm font-medium">
+        <div className="border-t border-black/30 pt-6 sm:pt-8">
+          <p className="text-center text-black text-sm font-medium">
             © {new Date().getFullYear()} Zyntiq. All rights reserved.
           </p>
         </div>
