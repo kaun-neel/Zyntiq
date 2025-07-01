@@ -26,6 +26,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  /* Default text color to black for readability */
+  color: #000000;
 }
 
 /* Global background class for consistent application */
@@ -33,32 +35,92 @@ body {
   background: linear-gradient(135deg, #6b46c1 0%, #7c3aed 15%, #8b5cf6 35%, #9333ea 55%, #a855f7 75%, #c084fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
+  /* Ensure all text is black by default */
+  color: #000000;
 }
 
 /* Alternative gradient variations for different sections */
 .yellow-gradient-light {
   background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 25%, #a5b4fc 50%, #8b5cf6 75%, #7c3aed 100%);
+  color: #000000;
 }
 
 .yellow-gradient-medium {
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 25%, #6d28d9 50%, #5b21b6 75%, #4c1d95 100%);
+  color: #000000;
 }
 
 .yellow-gradient-dark {
   background: linear-gradient(135deg, #5b21b6 0%, #4c1d95 25%, #3730a3 50%, #312e81 75%, #1e1b4b 100%);
+  color: #ffffff; /* White text on dark backgrounds */
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-purple-200 to-white text-transparent bg-clip-text;
+  @apply bg-gradient-to-r from-purple-900 to-black text-transparent bg-clip-text;
   /* Fix text rendering issues */
   -webkit-background-clip: text;
   background-clip: text;
   display: inline-block;
   line-height: 1.2;
+  font-weight: 700;
 }
 
+/* Updated gradient button to match the image style */
 .gradient-button {
-  @apply bg-gradient-to-r from-purple-300 to-indigo-300 text-purple-900;
+  @apply bg-gradient-to-r from-purple-300 to-purple-200 text-purple-900 font-semibold;
+  border-radius: 50px;
+  padding: 12px 24px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.gradient-button:hover {
+  @apply bg-gradient-to-r from-purple-200 to-purple-100;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Standard button styles to match the image */
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-300 to-purple-200 text-purple-900 font-semibold;
+  border-radius: 50px;
+  padding: 12px 24px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  @apply bg-gradient-to-r from-purple-200 to-purple-100;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-purple-200 to-purple-100 text-purple-800 font-medium;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  @apply bg-gradient-to-r from-purple-300 to-purple-200;
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
 }
 
 /* Enhanced floating animation - works on all devices */
@@ -180,6 +242,7 @@ body {
   @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-lg p-6 sm:p-8 relative border border-white/40 hover:border-purple-300;
   min-height: 260px;
   transition: all 0.3s ease;
+  color: #000000; /* Black text for readability */
 }
 
 .testimonial-card:hover {
@@ -193,6 +256,7 @@ body {
   @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-sm p-6 sm:p-8 flex flex-col h-full border border-white/40;
   min-height: 380px;
   transition: all 0.3s ease;
+  color: #000000; /* Black text for readability */
 }
 
 .course-card:hover {
@@ -201,8 +265,20 @@ body {
 }
 
 .enroll-button {
-  @apply bg-purple-300 hover:bg-purple-400 text-purple-900 font-medium py-3 px-6 rounded-full transition-all duration-300 text-center;
+  @apply bg-gradient-to-r from-purple-300 to-purple-200 text-purple-900 font-semibold;
+  border-radius: 50px;
+  padding: 12px 24px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
   min-height: 48px; /* Better touch target for mobile */
+  text-align: center;
+}
+
+.enroll-button:hover {
+  @apply bg-gradient-to-r from-purple-200 to-purple-100;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
 /* Enhanced floating animation for signup page */
@@ -377,6 +453,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  color: #000000; /* Black text for readability */
 }
 
 .glass-card:hover {
@@ -390,6 +467,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  color: #000000; /* Black text for readability */
 }
 
 .glass-card-dark:hover {
@@ -417,8 +495,8 @@ body {
 
 /* Ensure text remains readable on purple background */
 .text-on-purple {
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: #000000; /* Changed to black for better readability */
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); /* White shadow for contrast */
 }
 
 /* Enhanced shadows for better contrast on purple background */
@@ -475,6 +553,7 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #000000; /* Black text for readability */
   }
 
   /* Fix gradient text on mobile */
@@ -482,7 +561,7 @@ body {
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(to right, #e0e7ff, #ffffff);
+    background-image: linear-gradient(to right, #1f2937, #000000);
     display: inline-block;
     line-height: 1.1;
   }
@@ -491,27 +570,32 @@ body {
   p, span, div {
     line-height: 1.4;
     text-rendering: optimizeLegibility;
+    color: #000000; /* Black text for readability */
   }
 
   /* Certificate mobile optimizations */
   .certificate-container h1 {
     font-size: clamp(1.5rem, 4vw, 3rem);
     line-height: 1.1;
+    color: #000000;
   }
 
   .certificate-container h2 {
     font-size: clamp(1.75rem, 5vw, 3.5rem);
     line-height: 1.1;
+    color: #000000;
   }
 
   .certificate-container h3 {
     font-size: clamp(1.25rem, 3.5vw, 2.5rem);
     line-height: 1.1;
+    color: #000000;
   }
 
   .certificate-container p {
     font-size: clamp(0.875rem, 2.5vw, 1.25rem);
     line-height: 1.3;
+    color: #000000;
   }
 }
 
@@ -533,18 +617,22 @@ body {
   /* Certificate text optimizations for very small screens */
   .certificate-container h1 {
     font-size: clamp(1.25rem, 3.5vw, 2rem);
+    color: #000000;
   }
 
   .certificate-container h2 {
     font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+    color: #000000;
   }
 
   .certificate-container h3 {
     font-size: clamp(1.125rem, 3vw, 1.75rem);
+    color: #000000;
   }
 
   .certificate-container p {
     font-size: clamp(0.75rem, 2vw, 1rem);
+    color: #000000;
   }
 }
 
@@ -626,6 +714,7 @@ select {
   appearance: none;
   border-radius: 0.75rem;
   font-size: 16px; /* Prevents zoom on iOS */
+  color: #000000; /* Black text for readability */
 }
 
 /* Loading states */
@@ -652,6 +741,7 @@ select {
   
   body {
     background: white !important;
+    color: black !important;
   }
   
   .glass-card,
@@ -659,6 +749,7 @@ select {
     background: white !important;
     box-shadow: none !important;
     border: 1px solid #ccc !important;
+    color: black !important;
   }
 }
 
@@ -667,5 +758,28 @@ select {
   body {
     font-family: 'Poppins', sans-serif;
     font-variation-settings: 'wght' 400;
+    color: #000000;
   }
+}
+
+/* Global text color overrides for better readability */
+h1, h2, h3, h4, h5, h6 {
+  color: #000000 !important;
+}
+
+p, span, div, li, td, th {
+  color: #000000;
+}
+
+/* Footer specific styles */
+footer, footer * {
+  color: #000000 !important;
+}
+
+footer a {
+  color: #7c3aed !important;
+}
+
+footer a:hover {
+  color: #5b21b6 !important;
 }

@@ -15,7 +15,7 @@ const PricingSection = () => {
         'Access to 100+ upcoming courses in 2025',
         'E-books worth ₹9,999'
       ],
-      buttonStyle: 'border-2 border-purple-500 text-purple-600 hover:bg-purple-50',
+      buttonStyle: 'btn-secondary',
       link: '/premium-pass'
     },
     {
@@ -31,7 +31,7 @@ const PricingSection = () => {
         'Access to 100+ upcoming courses in 2025',
         'E-books worth ₹9,999'
       ],
-      buttonStyle: 'bg-gradient-to-r from-purple-500 to-indigo-500 text-white hover:shadow-lg',
+      buttonStyle: 'btn-primary',
       link: '/premium-pass'
     }
   ];
@@ -40,10 +40,10 @@ const PricingSection = () => {
     <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-black">
             Pricing Plans <span className="gradient-text">For You</span>
           </h2>
-          <p className="text-gray-700 text-sm sm:text-base">Precision pricing, powerful results.</p>
+          <p className="text-black text-sm sm:text-base">Precision pricing, powerful results.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
@@ -58,9 +58,9 @@ const PricingSection = () => {
                     <div className="text-purple-600">
                       {plan.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800">{plan.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-black">{plan.name}</h3>
                   </div>
-                  <span className="text-xs sm:text-sm bg-purple-100/80 backdrop-blur-sm px-3 sm:px-4 py-1 rounded-full border border-purple-200/50">
+                  <span className="text-xs sm:text-sm bg-purple-100/80 backdrop-blur-sm px-3 sm:px-4 py-1 rounded-full border border-purple-200/50 text-black">
                     Started from {plan.price}
                   </span>
                 </div>
@@ -70,7 +70,7 @@ const PricingSection = () => {
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700 text-sm sm:text-base leading-relaxed">{feature}</span>
+                        <span className="text-black text-sm sm:text-base leading-relaxed">{feature}</span>
                       </li>
                     ))}
                     {/* Add extra spacing for Basic plan to align buttons */}
@@ -78,11 +78,11 @@ const PricingSection = () => {
                       <>
                         <li className="flex items-center gap-2 opacity-0 pointer-events-none">
                           <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                          <span className="text-gray-700 text-sm">Spacer item</span>
+                          <span className="text-black text-sm">Spacer item</span>
                         </li>
                         <li className="flex items-center gap-2 opacity-0 pointer-events-none">
                           <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                          <span className="text-gray-700 text-sm">Spacer item</span>
+                          <span className="text-black text-sm">Spacer item</span>
                         </li>
                       </>
                     )}
@@ -92,11 +92,11 @@ const PricingSection = () => {
                     <Link
                       to={plan.link}
                       onClick={() => window.scrollTo(0, 0)}
-                      className={`w-full py-3 px-6 rounded-full font-medium transition-all duration-300 block text-center text-sm sm:text-base ${plan.buttonStyle}`}
+                      className={`${plan.buttonStyle} w-full py-3 px-6 rounded-full font-medium transition-all duration-300 block text-center text-sm sm:text-base`}
                     >
                       Enroll now
                     </Link>
-                    <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-600">Zyntiq Lifetime Membership</p>
+                    <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-black">Zyntiq Lifetime Membership</p>
                   </div>
                 </div>
               </div>
