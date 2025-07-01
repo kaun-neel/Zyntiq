@@ -47,10 +47,10 @@ const AboutPage = () => {
       {/* Innovation Section */}
       <div className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center lg:text-left">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-gray-800">
-            <span className="text-purple-600">Innovation</span>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-black">
+            <span className="text-black">Innovation</span>
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed">
+          <p className="text-black max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed font-medium">
             is no longer optional — it's essential. That's why we design learning experiences, tools, and opportunities that are dynamic, adaptive, and built for real-world impact.
           </p>
         </div>
