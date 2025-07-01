@@ -66,18 +66,16 @@ const TestimonialsSection = () => {
   const testimonialsPerView = isMobile ? 1 : 3;
   const totalSlides = testimonials.length - testimonialsPerView + 1;
 
-  // Auto-slide functionality (disabled on mobile for better performance)
+  // Auto-slide functionality - ENABLED for both mobile and desktop
   useEffect(() => {
-    if (isMobile) return; // Disable auto-slide on mobile
-    
     const interval = setInterval(() => {
       if (!isAnimating) {
         nextTestimonial();
       }
-    }, 5000);
+    }, 4000); // Changed to 4 seconds for better mobile experience
 
     return () => clearInterval(interval);
-  }, [activeIndex, isAnimating, isMobile]);
+  }, [activeIndex, isAnimating]);
 
   const nextTestimonial = () => {
     if (isAnimating) return;
