@@ -107,14 +107,14 @@ const CoursesSection = () => {
           <Link
             to="/courses"
             onClick={handleNavigation}
-            className="gradient-button px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base"
+            className="bg-gradient-to-r from-purple-300 to-indigo-300 text-purple-900 px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Start Learning <ArrowRight size={16} />
           </Link>
           <Link
             to="/courses"
             onClick={handleNavigation}
-            className="px-6 py-3 rounded-full border border-purple-300 text-purple-600 hover:bg-purple-50 transition-colors text-center text-sm sm:text-base"
+            className="bg-gradient-to-r from-white to-purple-50 text-purple-900 border-2 border-purple-300 px-6 py-3 rounded-full font-medium text-center text-sm sm:text-base hover:bg-gradient-to-r hover:from-purple-50 hover:to-purple-100 hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Browse courses
           </Link>
