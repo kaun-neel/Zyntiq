@@ -8,7 +8,7 @@
   --primary: #7c3aed;
   --secondary: #8b5cf6;
   --accent: #a855f7;
-  --background: #f8fafc;
+  --background: #1f2937;
 }
 
 body {
@@ -16,8 +16,8 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Apply the light purple and white gradient background */
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 15%, #e2e8f0 30%, #ddd6fe 50%, #c4b5fd 70%, #a78bfa 85%, #8b5cf6 100%);
+  /* Apply the purple and greyish black gradient background */
+  background: linear-gradient(135deg, #1f2937 0%, #374151 15%, #4b5563 30%, #6b7280 45%, #7c3aed 60%, #8b5cf6 75%, #a855f7 90%, #c084fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
   /* Prevent horizontal scroll on mobile */
@@ -28,9 +28,9 @@ body {
   -ms-text-size-adjust: 100%;
 }
 
-/* Global background class for consistent application - light purple and white */
+/* Global background class for consistent application - purple and greyish black */
 .yellow-gradient-bg {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 15%, #e2e8f0 30%, #ddd6fe 50%, #c4b5fd 70%, #a78bfa 85%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #374151 15%, #4b5563 30%, #6b7280 45%, #7c3aed 60%, #8b5cf6 75%, #a855f7 90%, #c084fc 100%);
   background-attachment: fixed;
   min-height: 100vh;
   position: relative;
@@ -39,19 +39,19 @@ body {
 
 /* Alternative gradient variations for different sections */
 .yellow-gradient-light {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%);
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 25%, #7c3aed 50%, #8b5cf6 75%, #a855f7 100%);
 }
 
 .yellow-gradient-medium {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #ddd6fe 50%, #c4b5fd 75%, #a78bfa 100%);
+  background: linear-gradient(135deg, #374151 0%, #4b5563 25%, #6b7280 50%, #7c3aed 75%, #8b5cf6 100%);
 }
 
 .yellow-gradient-dark {
-  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 25%, #a78bfa 50%, #8b5cf6 75%, #7c3aed 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #374151 25%, #4b5563 50%, #6b7280 75%, #7c3aed 100%);
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text;
+  @apply bg-gradient-to-r from-purple-300 to-pink-300 text-transparent bg-clip-text;
   /* Fix text rendering issues */
   -webkit-background-clip: text;
   background-clip: text;
@@ -372,31 +372,31 @@ body {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Glass morphism effects for cards on light gradient background - Mobile optimized */
+/* Glass morphism effects for cards on dark gradient background - Mobile optimized */
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 .glass-card-dark {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .glass-card-dark:hover {
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* Decorative background elements - Clean gradient without shapes */
@@ -457,7 +457,7 @@ body {
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(to right, #7c3aed, #4f46e5);
+    background-image: linear-gradient(to right, #d8b4fe, #f0abfc);
     display: inline-block;
     line-height: 1.1;
   }
@@ -536,7 +536,7 @@ body {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   /* Sharper shadows and borders for retina displays */
   .enhanced-shadow {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
   /* Better text rendering on high DPI */
@@ -548,7 +548,7 @@ body {
 
 /* Dark mode support (if needed in future) */
 @media (prefers-color-scheme: dark) {
-  /* Keep current light theme but prepare for dark mode */
+  /* Keep current dark theme but prepare for light mode */
   .dark-mode-ready {
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -663,17 +663,17 @@ select {
   background: rgba(139, 92, 246, 0.8);
 }
 
-/* Ensure text remains readable on light gradient background */
+/* Ensure text remains readable on dark gradient background */
 .text-on-purple {
-  color: #4c1d95;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Enhanced shadows for better contrast on light gradient background */
+/* Enhanced shadows for better contrast on dark gradient background */
 .enhanced-shadow {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .enhanced-shadow-lg {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 8px 16px rgba(0, 0, 0, 0.25);
 }

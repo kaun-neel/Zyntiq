@@ -61,7 +61,7 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className="text-gray-800 hover:text-purple-600 transition-colors duration-300 font-medium"
+                  className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   {item.name}
@@ -78,7 +78,7 @@ const Navbar = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to="/account"
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 relative"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-purple-300 text-white hover:bg-purple-500/20 transition-colors duration-300 relative"
                 >
                   <User size={20} />
                   {hasPremiumPass && (
@@ -105,7 +105,7 @@ const Navbar = () => {
             <>
               <Link 
                 to="/login"
-                className="px-4 py-2 rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 font-medium"
+                className="px-4 py-2 rounded-full border border-purple-300 text-white hover:bg-purple-500/20 transition-colors duration-300 font-medium"
               >
                 Log in
               </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 hover:bg-white transition-colors z-50"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-colors z-50"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -135,7 +135,7 @@ const Navbar = () => {
       )}
 
       {/* Mobile Menu */}
-      <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+      <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gray-900/95 backdrop-blur-lg shadow-2xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="p-6 pt-20">
@@ -146,7 +146,7 @@ const Navbar = () => {
                 <li key={item.name}>
                   <Link
                     to={item.path}
-                    className="block text-lg font-medium text-gray-800 hover:text-purple-600 transition-colors duration-300 py-2"
+                    className="block text-lg font-medium text-white hover:text-purple-300 transition-colors duration-300 py-2"
                     onClick={() => {
                       window.scrollTo(0, 0);
                       closeMobileMenu();
@@ -160,11 +160,11 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Auth Section */}
-          <div className="border-t border-gray-200 pt-6">
+          <div className="border-t border-gray-700 pt-6">
             {user ? (
               <div className="space-y-4">
                 {/* User Info */}
-                <div className="flex items-center gap-3 p-4 bg-purple-50 rounded-2xl">
+                <div className="flex items-center gap-3 p-4 bg-purple-500/20 rounded-2xl border border-purple-400/30">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center relative">
                     <User className="w-6 h-6 text-white" />
                     {hasPremiumPass && (
@@ -174,14 +174,14 @@ const Navbar = () => {
                     )}
                   </div>
                   <div className="flex-1">
-                    <p className="font-semibold text-gray-900">
+                    <p className="font-semibold text-white">
                       {user.first_name} {user.last_name}
                     </p>
-                    <p className="text-sm text-gray-600">{user.email}</p>
+                    <p className="text-sm text-purple-200">{user.email}</p>
                     {hasPremiumPass && (
                       <div className="flex items-center gap-1 mt-1">
-                        <Crown className="w-3 h-3 text-yellow-600" />
-                        <span className="text-xs font-medium text-yellow-700">Premium Member</span>
+                        <Crown className="w-3 h-3 text-yellow-400" />
+                        <span className="text-xs font-medium text-yellow-300">Premium Member</span>
                       </div>
                     )}
                   </div>
@@ -198,7 +198,7 @@ const Navbar = () => {
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-center py-3 px-4 border-2 border-red-300 text-red-600 rounded-xl font-medium hover:bg-red-50 transition-colors"
+                    className="block w-full text-center py-3 px-4 border-2 border-red-400 text-red-400 rounded-xl font-medium hover:bg-red-400/10 transition-colors"
                   >
                     Sign Out
                   </button>
@@ -208,7 +208,7 @@ const Navbar = () => {
               <div className="space-y-3">
                 <Link
                   to="/login"
-                  className="block w-full text-center py-3 px-4 border-2 border-purple-300 text-purple-600 rounded-xl font-medium hover:bg-purple-50 transition-colors"
+                  className="block w-full text-center py-3 px-4 border-2 border-purple-300 text-purple-300 rounded-xl font-medium hover:bg-purple-500/20 transition-colors"
                   onClick={closeMobileMenu}
                 >
                   Log in
@@ -225,8 +225,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Footer */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-500">
+          <div className="mt-8 pt-6 border-t border-gray-700">
+            <p className="text-center text-sm text-gray-400">
               © 2024 Zyntiq. All rights reserved.
             </p>
           </div>

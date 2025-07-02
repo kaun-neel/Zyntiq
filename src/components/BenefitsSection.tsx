@@ -29,12 +29,12 @@ const BenefitsSection = () => {
     <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">
             Discover Our Zyntiq's
             <br />
             <span className="gradient-text">Benefits & Features</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-700 text-sm sm:text-base px-4">
+          <p className="max-w-2xl mx-auto text-gray-200 text-sm sm:text-base px-4">
             In order to create an engaging learning experience, the role of 
             instructor is optional, but the role of learner is essential.
           </p>
