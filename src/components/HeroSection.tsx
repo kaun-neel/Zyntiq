@@ -31,23 +31,23 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden">
+    <section className="hero-gradient-bg py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
         {/* Content */}
         <div className="z-10 text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-gray-800">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-white">
             Learn from the<br className="hidden sm:block" /> 
             <span className="block sm:inline"> Experts Elevate</span><br className="hidden sm:block" />
-            <span className="gradient-text">Your Skills</span>
+            <span className="hero-gradient-text">Your Skills</span>
           </h1>
-          <p className="text-gray-700 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
+          <p className="text-gray-200 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
             Unlock your full potential with our comprehensive online courses. 
             Dive into a world of knowledge and transform your career with our 
             expertly-designed learning.
           </p>
           <Link 
             to="/courses"
-            className="inline-block gradient-button px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:shadow-lg transition-all duration-300 text-base sm:text-lg"
+            className="inline-block bg-gradient-to-r from-white to-gray-100 text-purple-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300 text-base sm:text-lg"
             onClick={() => window.scrollTo(0, 0)}
           >
             Start Learning
