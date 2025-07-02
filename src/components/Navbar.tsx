@@ -44,7 +44,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="hero-gradient-bg py-6 px-6 sm:px-8 md:px-16 lg:px-20 flex justify-between items-center relative z-50">
+      <header className="hero-gradient-bg py-4 px-4 sm:px-6 md:px-12 flex justify-between items-center relative z-50">
         {/* Logo - Made Larger */}
         <Link to="/" className="flex items-center gap-3 z-50" onClick={closeMobileMenu}>
           <img 
@@ -56,12 +56,12 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden lg:block">
-          <ul className="flex gap-8 xl:gap-10">
+          <ul className="flex gap-6 xl:gap-8">
             {navItems.map((item) => (
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className="text-white hover:text-purple-300 transition-colors duration-300 font-medium text-base"
+                  className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   {item.name}
@@ -72,13 +72,13 @@ const Navbar = () => {
         </nav>
         
         {/* Desktop Auth Buttons */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           {user ? (
             <>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <Link
                   to="/account"
-                  className="w-11 h-11 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 relative"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 relative"
                 >
                   <User size={20} />
                   {hasPremiumPass && (
@@ -96,7 +96,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={handleLogout}
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-gradient-to-r from-red-400 to-pink-500 text-white hover:shadow-md transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-red-400 to-pink-500 text-white hover:shadow-md transition-all duration-300"
               >
                 <LogOut size={20} />
               </button>
@@ -105,13 +105,13 @@ const Navbar = () => {
             <>
               <Link 
                 to="/login"
-                className="px-5 py-2.5 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 font-medium"
+                className="px-4 py-2 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 font-medium"
               >
                 Log in
               </Link>
               <Link
                 to="/signup"
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-white to-gray-100 text-purple-900 hover:shadow-md transition-all duration-300 font-medium"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-white to-gray-100 text-purple-900 hover:shadow-md transition-all duration-300 font-medium"
               >
                 Sign up
               </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="lg:hidden w-11 h-11 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-colors z-50"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-colors z-50"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -138,7 +138,7 @@ const Navbar = () => {
       <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="p-6 pt-24">
+        <div className="p-6 pt-20">
           {/* Mobile Navigation */}
           <nav className="mb-8">
             <ul className="space-y-4">
