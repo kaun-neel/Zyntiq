@@ -35,10 +35,10 @@ const HeroSection = () => {
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
         {/* Content */}
         <div className="z-10 text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-white">
-            Learn from the<br className="hidden sm:block" /> 
-            <span className="block sm:inline"> Experts Elevate</span><br className="hidden sm:block" />
-            <span className="hero-gradient-text">Your Skills</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+            <span className="text-white">Learn from the</span><br className="hidden sm:block" /> 
+            <span className="text-white block sm:inline"> Experts Elevate</span><br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-white via-purple-200 to-purple-100 bg-clip-text text-transparent">Your Skills</span>
           </h1>
           <p className="text-gray-200 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
             Unlock your full potential with our comprehensive online courses. 
