@@ -40,7 +40,7 @@ const HeroSection = () => {
             <span className="block sm:inline"> Experts Elevate</span><br className="hidden sm:block" />
             <span className="gradient-text">Your Skills</span>
           </h1>
-          <p className="text-gray-700 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
+          <p className="text-white mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0 text-base sm:text-lg leading-relaxed">
             Unlock your full potential with our comprehensive online courses. 
             Dive into a world of knowledge and transform your career with our 
             expertly-designed learning.
