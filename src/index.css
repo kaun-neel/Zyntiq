@@ -114,13 +114,6 @@ body {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Ensure white text is visible on dark hero background */
-.hero-text-white {
-  color: #ffffff !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .gradient-button {
@@ -534,13 +527,6 @@ body {
     background-image: linear-gradient(to right, #ffffff, #e0e7ff);
     display: inline-block;
     line-height: 1.1;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Ensure white text is visible on mobile */
-  .hero-text-white {
-    color: #ffffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   /* Ensure proper text scaling */
