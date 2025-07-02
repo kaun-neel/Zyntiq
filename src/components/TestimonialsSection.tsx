@@ -125,12 +125,12 @@ const TestimonialsSection = () => {
     <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 px-4">
             What are Students saying<br className="sm:hidden" /> 
             <span className="block sm:inline mt-2 sm:mt-0"> about </span>
             <span className="gradient-text">our Courses</span>
           </h2>
-          <p className="text-gray-200 max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p className="text-gray-700 max-w-2xl mx-auto text-sm sm:text-base px-4">
             Join thousands of successful learners who have transformed their careers with our comprehensive courses.
           </p>
         </div>
@@ -200,7 +200,7 @@ const TestimonialsSection = () => {
                 className={`transition-all duration-300 rounded-full ${
                   index === activeIndex
                     ? 'w-8 sm:w-12 h-3 bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg'
-                    : 'w-3 h-3 bg-gray-400 hover:bg-gray-300'
+                    : 'w-3 h-3 bg-gray-400 hover:bg-gray-500'
                 } disabled:opacity-50`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -212,23 +212,23 @@ const TestimonialsSection = () => {
             <button 
               onClick={prevTestimonial}
               disabled={isAnimating}
-              className="group w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-400 hover:bg-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-white/20 backdrop-blur-sm"
+              className="group w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-400 flex items-center justify-center hover:border-purple-500 hover:bg-purple-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-white/80 backdrop-blur-sm"
               aria-label="Previous testimonials"
             >
               <ChevronLeft 
                 size={isMobile ? 16 : 20} 
-                className="text-white group-hover:text-purple-300 transition-colors" 
+                className="text-gray-600 group-hover:text-purple-600 transition-colors" 
               />
             </button>
             <button 
               onClick={nextTestimonial}
               disabled={isAnimating}
-              className="group w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:border-purple-400 hover:bg-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-white/20 backdrop-blur-sm"
+              className="group w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-400 flex items-center justify-center hover:border-purple-500 hover:bg-purple-50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-white/80 backdrop-blur-sm"
               aria-label="Next testimonials"
             >
               <ChevronRight 
                 size={isMobile ? 16 : 20} 
-                className="text-white group-hover:text-purple-300 transition-colors" 
+                className="text-gray-600 group-hover:text-purple-600 transition-colors" 
               />
             </button>
           </div>
@@ -236,7 +236,7 @@ const TestimonialsSection = () => {
 
         {/* Progress Indicator - Minimal bottom margin */}
         <div className="mt-1 sm:mt-2 text-center">
-          <span className="text-xs sm:text-sm text-gray-200">
+          <span className="text-xs sm:text-sm text-gray-700">
             Showing {activeIndex + 1}-{Math.min(activeIndex + testimonialsPerView, testimonials.length)} of {testimonials.length} testimonials
           </span>
         </div>
