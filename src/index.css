@@ -8,7 +8,7 @@
   --primary: #7c3aed;
   --secondary: #8b5cf6;
   --accent: #a855f7;
-  --background: #f3f4f6;
+  --background: #3E1166;
 }
 
 body {
@@ -16,8 +16,8 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Apply the darker purple gradient background */
-  background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 15%, #6d28d9 35%, #7c3aed 55%, #8b5cf6 75%, #a855f7 100%);
+  /* Apply the new #3E1166 background color */
+  background: #3E1166;
   background-attachment: fixed;
   min-height: 100vh;
   /* Prevent horizontal scroll on mobile */
@@ -28,9 +28,9 @@ body {
   -ms-text-size-adjust: 100%;
 }
 
-/* Global background class for consistent application - darker purple */
+/* Global background class for consistent application - #3E1166 */
 .yellow-gradient-bg {
-  background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 15%, #6d28d9 35%, #7c3aed 55%, #8b5cf6 75%, #a855f7 100%);
+  background: #3E1166;
   background-attachment: fixed;
   min-height: 100vh;
   position: relative;
@@ -64,17 +64,17 @@ body {
   z-index: 0;
 }
 
-/* Alternative gradient variations for different sections - darker */
+/* Alternative gradient variations for different sections - based on #3E1166 */
 .yellow-gradient-light {
-  background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 25%, #8b5cf6 50%, #7c3aed 75%, #6d28d9 100%);
+  background: linear-gradient(135deg, #5B1A7A 0%, #4A1569 25%, #3E1166 50%, #321055 75%, #260D44 100%);
 }
 
 .yellow-gradient-medium {
-  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 25%, #4c1d95 50%, #3730a3 75%, #312e81 100%);
+  background: linear-gradient(135deg, #4A1569 0%, #3E1166 25%, #321055 50%, #260D44 75%, #1A0A33 100%);
 }
 
 .yellow-gradient-dark {
-  background: linear-gradient(135deg, #3730a3 0%, #312e81 25%, #1e1b4b 50%, #1e3a8a 75%, #1e40af 100%);
+  background: linear-gradient(135deg, #321055 0%, #260D44 25%, #1A0A33 50%, #0E0722 75%, #020411 100%);
 }
 
 .gradient-text {
