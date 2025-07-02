@@ -51,7 +51,7 @@ const CoursesSection = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center">
           What will <span className="gradient-text">You Learn?</span>
         </h2>
-        <p className="text-center text-sm text-gray-600 mb-8 sm:mb-12 max-w-xl mx-auto px-4">
+        <p className="text-center text-sm text-white mb-8 sm:mb-12 max-w-xl mx-auto px-4">
           In order to create an engaging learning experience, the role of 
           instructor is optional, but the role of learner is essential.
         </p>

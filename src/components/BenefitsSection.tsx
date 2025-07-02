@@ -34,7 +34,7 @@ const BenefitsSection = () => {
             <br />
             <span className="gradient-text">Benefits & Features</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-600 text-sm sm:text-base px-4">
+          <p className="max-w-2xl mx-auto text-white text-sm sm:text-base px-4">
             In order to create an engaging learning experience, the role of 
             instructor is optional, but the role of learner is essential.
           </p>
@@ -45,7 +45,7 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
-              className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-lg border-2 border-purple-200/50 hover:border-purple-300 hover:shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center min-h-[300px] group"
+              className="relative bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-8 shadow-lg border-2 border-purple-200/50 hover:border-purple-300 hover:shadow-xl hover:transform hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center min-h-[300px] group"
             >
               {/* Outer decorative border */}
               <div className="absolute inset-2 border border-purple-100 rounded-2xl opacity-50"></div>
