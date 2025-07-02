@@ -228,11 +228,24 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
         });
       } catch (error) {
         console.error('Error sharing certificate:', error);
+        // Fallback: copy to clipboard when Web Share API fails
+        try {
+          await navigator.clipboard.writeText(shareText);
+          alert('Certificate details copied to clipboard!');
+        } catch (clipboardError) {
+          console.error('Failed to copy to clipboard:', clipboardError);
+          alert('Unable to share or copy certificate details. Please try again.');
+        }
       }
     } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(shareText);
-      alert('Certificate details copied to clipboard!');
+      // Fallback: copy to clipboard when Web Share API is not available
+      try {
+        await navigator.clipboard.writeText(shareText);
+        alert('Certificate details copied to clipboard!');
+      } catch (clipboardError) {
+        console.error('Failed to copy to clipboard:', clipboardError);
+        alert('Unable to copy certificate details. Please try again.');
+      }
     }
   };
 
