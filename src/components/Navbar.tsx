@@ -61,7 +61,7 @@ const Navbar = () => {
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
+                  className="text-gray-800 hover:text-purple-600 transition-colors duration-300 font-medium"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   {item.name}
@@ -78,7 +78,7 @@ const Navbar = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to="/account"
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 relative"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 relative"
                 >
                   <User size={20} />
                   {hasPremiumPass && (
@@ -105,7 +105,7 @@ const Navbar = () => {
             <>
               <Link 
                 to="/login"
-                className="px-4 py-2 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors duration-300 font-medium"
+                className="px-4 py-2 rounded-full border border-purple-300 text-gray-700 hover:bg-gray-50 transition-colors duration-300 font-medium"
               >
                 Log in
               </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-colors z-50"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 hover:bg-white transition-colors z-50"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}

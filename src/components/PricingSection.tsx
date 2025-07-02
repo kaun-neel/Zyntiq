@@ -40,10 +40,10 @@ const PricingSection = () => {
     <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800">
             Pricing Plans <span className="gradient-text">For You</span>
           </h2>
-          <p className="text-white text-sm sm:text-base">Precision pricing, powerful results.</p>
+          <p className="text-gray-700 text-sm sm:text-base">Precision pricing, powerful results.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">

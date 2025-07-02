@@ -125,12 +125,12 @@ const TestimonialsSection = () => {
     <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 px-4">
             What are Students saying<br className="sm:hidden" /> 
             <span className="block sm:inline mt-2 sm:mt-0"> about </span>
             <span className="gradient-text">our Courses</span>
           </h2>
-          <p className="text-white max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p className="text-gray-700 max-w-2xl mx-auto text-sm sm:text-base px-4">
             Join thousands of successful learners who have transformed their careers with our comprehensive courses.
           </p>
         </div>
@@ -236,7 +236,7 @@ const TestimonialsSection = () => {
 
         {/* Progress Indicator - Minimal bottom margin */}
         <div className="mt-1 sm:mt-2 text-center">
-          <span className="text-xs sm:text-sm text-white">
+          <span className="text-xs sm:text-sm text-gray-700">
             Showing {activeIndex + 1}-{Math.min(activeIndex + testimonialsPerView, testimonials.length)} of {testimonials.length} testimonials
           </span>
         </div>

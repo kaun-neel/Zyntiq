@@ -48,10 +48,10 @@ const CoursesSection = () => {
   return (
     <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center text-gray-800">
           What will <span className="gradient-text">You Learn?</span>
         </h2>
-        <p className="text-center text-sm text-white mb-8 sm:mb-12 max-w-xl mx-auto px-4">
+        <p className="text-center text-sm text-gray-700 mb-8 sm:mb-12 max-w-xl mx-auto px-4">
           In order to create an engaging learning experience, the role of 
           instructor is optional, but the role of learner is essential.
         </p>
@@ -107,7 +107,7 @@ const CoursesSection = () => {
           <Link
             to="/courses"
             onClick={handleNavigation}
-            className="bg-gradient-to-r from-purple-300 to-indigo-300 text-purple-900 px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base hover:shadow-lg hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 text-sm sm:text-base hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Start Learning <ArrowRight size={16} />
           </Link>
