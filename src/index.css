@@ -37,33 +37,6 @@ body {
   overflow: hidden;
 }
 
-/* Add decorative elements to the background */
-.yellow-gradient-bg::before {
-  content: '';
-  position: absolute;
-  top: 10%;
-  right: 15%;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.3), rgba(139, 92, 246, 0.2));
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-}
-
-.yellow-gradient-bg::after {
-  content: '';
-  position: absolute;
-  bottom: 20%;
-  left: 10%;
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(45deg, rgba(124, 58, 237, 0.3), rgba(109, 40, 217, 0.2));
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: 0;
-}
-
 /* Alternative gradient variations for different sections - based on #3E1166 */
 .yellow-gradient-light {
   background: linear-gradient(135deg, #5B1A7A 0%, #4A1569 25%, #3E1166 50%, #321055 75%, #260D44 100%);
@@ -426,77 +399,10 @@ body {
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* Decorative background elements */
+/* Decorative background elements - REMOVED ALL DECORATIVE SHAPES */
 .decorative-elements {
   position: relative;
   overflow: hidden;
-}
-
-.decorative-elements::before {
-  content: '';
-  position: absolute;
-  top: 20%;
-  right: 10%;
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.4), rgba(139, 92, 246, 0.3));
-  border-radius: 50%;
-  filter: blur(30px);
-  animation: float 8s ease-in-out infinite;
-  z-index: 0;
-}
-
-.decorative-elements::after {
-  content: '';
-  position: absolute;
-  bottom: 30%;
-  left: 15%;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(45deg, rgba(124, 58, 237, 0.4), rgba(109, 40, 217, 0.3));
-  border-radius: 50%;
-  filter: blur(40px);
-  animation: float 10s ease-in-out infinite reverse;
-  z-index: 0;
-}
-
-/* Additional decorative shapes */
-.shape-1 {
-  position: absolute;
-  top: 15%;
-  left: 5%;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.1));
-  border-radius: 20px;
-  transform: rotate(45deg);
-  animation: float 6s ease-in-out infinite;
-  z-index: 0;
-}
-
-.shape-2 {
-  position: absolute;
-  bottom: 25%;
-  right: 8%;
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(45deg, rgba(124, 58, 237, 0.2), rgba(109, 40, 217, 0.1));
-  border-radius: 50%;
-  animation: float 7s ease-in-out infinite reverse;
-  z-index: 0;
-}
-
-.shape-3 {
-  position: absolute;
-  top: 60%;
-  left: 3%;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.3), rgba(139, 92, 246, 0.2));
-  border-radius: 15px;
-  transform: rotate(30deg);
-  animation: float 9s ease-in-out infinite;
-  z-index: 0;
 }
 
 /* Mobile-specific improvements */
@@ -581,16 +487,6 @@ body {
   .certificate-container p {
     font-size: clamp(0.875rem, 2.5vw, 1.25rem);
     line-height: 1.3;
-  }
-
-  /* Reduce decorative elements on mobile */
-  .decorative-elements::before,
-  .decorative-elements::after,
-  .shape-1,
-  .shape-2,
-  .shape-3 {
-    opacity: 0.5;
-    transform: scale(0.7);
   }
 }
 

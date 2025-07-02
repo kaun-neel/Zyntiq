@@ -26,11 +26,7 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden decorative-elements">
-      {/* Additional decorative elements for this section */}
-      <div className="absolute top-20 left-10 w-24 h-24 bg-gradient-to-br from-purple-300/20 to-indigo-300/10 rounded-full animate-float hidden md:block" style={{animationDelay: '3s'}}></div>
-      <div className="absolute bottom-20 right-12 w-32 h-32 bg-gradient-to-br from-pink-300/20 to-purple-300/10 rounded-2xl transform rotate-45 animate-float hidden md:block" style={{animationDelay: '1.5s'}}></div>
-      
+    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">

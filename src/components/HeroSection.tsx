@@ -31,17 +31,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden decorative-elements">
-      {/* Decorative background shapes */}
-      <div className="shape-1"></div>
-      <div className="shape-2"></div>
-      <div className="shape-3"></div>
-      
-      {/* Additional floating geometric shapes */}
-      <div className="absolute top-10 right-20 w-16 h-16 bg-gradient-to-br from-purple-300/30 to-indigo-300/20 rounded-2xl transform rotate-45 animate-float hidden md:block"></div>
-      <div className="absolute bottom-32 left-16 w-12 h-12 bg-gradient-to-br from-pink-300/30 to-purple-300/20 rounded-full animate-float hidden md:block" style={{animationDelay: '2s'}}></div>
-      <div className="absolute top-1/2 right-1/4 w-8 h-8 bg-gradient-to-br from-indigo-300/30 to-blue-300/20 rounded-lg transform rotate-12 animate-float hidden md:block" style={{animationDelay: '1s'}}></div>
-      
+    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
         {/* Content */}
         <div className="z-10 text-center md:text-left">

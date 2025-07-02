@@ -122,11 +122,7 @@ const TestimonialsSection = () => {
   const visibleTestimonials = getVisibleTestimonials();
 
   return (
-    <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg relative overflow-hidden decorative-elements">
-      {/* Additional decorative elements for testimonials */}
-      <div className="absolute top-16 right-8 w-20 h-20 bg-gradient-to-br from-purple-300/25 to-indigo-300/15 rounded-full animate-float hidden md:block" style={{animationDelay: '2.5s'}}></div>
-      <div className="absolute bottom-24 left-6 w-28 h-28 bg-gradient-to-br from-pink-300/25 to-purple-300/15 rounded-2xl transform rotate-30 animate-float hidden md:block" style={{animationDelay: '4s'}}></div>
-      
+    <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-16 yellow-gradient-bg relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-800 px-4">
